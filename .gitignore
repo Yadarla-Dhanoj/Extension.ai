@@ -1,0 +1,58 @@
+# =============================================================================
+# Root + backend + frontend — keep commits small; install/build regenerates the rest
+# =============================================================================
+
+# Dependencies (any package in this repo)
+node_modules/
+
+# Secrets — use .env.example only
+.env
+.env.*
+!.env.example
+
+# Build / bundler output
+dist/
+build/
+out/
+.next/
+*.tsbuildinfo
+
+# Vite (dev + dependency pre-bundles under node_modules are already ignored)
+.vite/
+
+# Backend — generated at runtime
+backend/downloads/
+backend/data/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Caches & local tooling
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+
+# Tests
+coverage/
+.nyc_output/
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors & local IDE (machine-specific)
+.idea/
+*.swp
+*.swo
+*~
+
+# Cursor workspace (transcripts, local state — not source)
+.cursor/

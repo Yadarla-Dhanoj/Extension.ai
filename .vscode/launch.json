@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Backend (Nodemon)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Open Frontend in Browser",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "start", "http://localhost:5173"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Full Stack + Open Browser",
+      "configurations": ["Open Frontend in Browser"],
+      "preLaunchTask": "Run Full Stack"
+    }
+  ]
+}

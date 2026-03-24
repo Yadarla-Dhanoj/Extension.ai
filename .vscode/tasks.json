@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install All Dependencies",
+      "type": "shell",
+      "command": "npm run install:all",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Backend",
+      "type": "shell",
+      "command": "npm run dev:backend",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*nodemon.*starting.*",
+          "endsPattern": ".*Extensio backend listening on.*|.*Running in in-memory fallback mode.*"
+        }
+      }
+    },
+    {
+      "label": "Run Frontend",
+      "type": "shell",
+      "command": "npm run dev:frontend",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*vite.*",
+          "endsPattern": ".*Local:.*http://localhost:5173.*"
+        }
+      }
+    },
+    {
+      "label": "Run Full Stack",
+      "dependsOn": ["Run Backend", "Run Frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Frontend",
+      "type": "shell",
+      "command": "npm run build:frontend",
+      "problemMatcher": []
+    }
+  ]
+}
