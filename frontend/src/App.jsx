@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { api } from "./api";
 
 const page = {
@@ -234,11 +234,11 @@ function AuthPage({ mode = "login" }) {
           )}
           {mode === "login" ? (
             <p>
-              New user? <a href="/register">Create account</a>
+              New user? <Link to="/register">Create account</Link>
             </p>
           ) : (
             <p>
-              Already have account? <a href="/login">Login</a>
+              Already have account? <Link to="/login">Login</Link>
             </p>
           )}
         </div>

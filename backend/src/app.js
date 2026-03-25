@@ -25,6 +25,8 @@ export async function createApp() {
     cors({
       origin(origin, callback) {
         if (!origin) return callback(null, true);
+        // When opening the frontend as a local file (file://) some browsers send Origin: "null".
+        if (origin === "null") return callback(null, true);
         // Allow common local dev origins even if users use different hostnames.
         const allowedLocalPrefixes = [
           "http://localhost:",
