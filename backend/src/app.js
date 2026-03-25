@@ -25,9 +25,22 @@ export async function createApp() {
     cors({
       origin(origin, callback) {
         if (!origin) return callback(null, true);
-        const isLocalHost =
-          origin.startsWith("http://localhost:") || origin.startsWith("http://127.0.0.1:");
-        if (isLocalHost) return callback(null, true);
+        // Allow common local dev origins even if users use different hostnames.
+        const allowedLocalPrefixes = [
+          "http://localhost:",
+          "http://127.0.0.1:",
+          "http://0.0.0.0:",
+          "http://[::1]:",
+          "http://::1:",
+          "https://localhost:",
+          "https://127.0.0.1:",
+          "https://0.0.0.0:",
+          "https://[::1]:",
+          "https://::1:"
+        ];
+        const isLocalDev = allowedLocalPrefixes.some((p) => origin.startsWith(p));
+        if (isLocalDev) return callback(null, true);
+        // Allow the configured frontend origin as well (production / custom ports).
         if (origin === env.frontendUrl) return callback(null, true);
         return callback(new Error("CORS blocked for this origin"), false);
       }
