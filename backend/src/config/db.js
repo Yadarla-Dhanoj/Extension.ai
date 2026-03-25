@@ -9,7 +9,7 @@ export function isDbConnected() {
 
 export async function connectDb() {
   if (!env.mongoUri) {
-    console.warn("MONGO_URI missing. Running in in-memory fallback mode.");
+    console.log("MONGO_URI not set. Using local JSON DB (no MongoDB required).");
     dbConnected = false;
     return;
   }
@@ -18,7 +18,9 @@ export async function connectDb() {
     dbConnected = true;
     console.log("MongoDB connected");
   } catch (err) {
-    console.warn(`MongoDB unavailable (${err.message}). Running in in-memory fallback mode.`);
+    console.log(
+      `MongoDB not reachable (${err.message}). Using local JSON DB (this is OK for dev).`
+    );
     dbConnected = false;
   }
 }

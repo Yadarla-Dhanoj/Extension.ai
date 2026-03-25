@@ -65,7 +65,7 @@ Frontend runs on `http://localhost:5173`, backend on `http://localhost:5000`.
 
 ### Notes
 
-- If MongoDB is unavailable, backend auto-runs in in-memory fallback mode.
+- If MongoDB is unavailable, the backend automatically uses a **local JSON DB fallback** (this is OK for development).
 - Registration and generation still work in fallback mode, but data resets on backend restart.
 
 ## Environment Variables
