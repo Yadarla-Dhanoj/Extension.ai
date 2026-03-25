@@ -277,8 +277,7 @@ function Dashboard() {
 
   async function loadHealth() {
     try {
-      const res = await fetch("/api/health");
-      const data = await res.json();
+      const data = await api.health();
       setDbMode(data.databaseMode || "-");
     } catch {
       setDbMode("unreachable");
