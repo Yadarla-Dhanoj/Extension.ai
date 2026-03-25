@@ -1,0 +1,8 @@
+{
+  "watch": ["src"],
+  "ext": "js,json",
+  "ignore": ["downloads/**", "data/**", "node_modules/**"],
+  "signal": "SIGTERM",
+  "delay": "250"
+}
+
